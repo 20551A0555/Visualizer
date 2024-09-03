@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container maindiv table-responsive-sm table-responsive-md">
+    <table class="table table-bordered table-secondary table-striped text-center">
+        <thead>
+          <tr>
+            <th *ngFor="let h of headers" scope="col">{{h}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of rows">
+            <td *ngFor="let d of r">{{d}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div onclick="window.print();" [class]="btnstyle">{{save}}</div>
+    </div>
+</body>
+</html>

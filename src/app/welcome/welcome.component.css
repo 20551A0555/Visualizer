@@ -1,0 +1,87 @@
+.modaldiv{
+    scroll-behavior:smooth
+}
+.maindiv .buttons,.maindiv{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: conic-gradient(from 90deg at 50% 0%,rgb(223, 140, 140),rgb(120, 120, 231),rgb(108, 167, 108),rgb(233, 224, 94));
+    row-gap: 2rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.maindiv .buttons{
+    background-color: rgba(255, 255, 255, 0.1);
+    background-image: none;
+    width: 40%;
+    height: 50vh;
+    border-left: 1.5px solid black;
+    border-top: 1.5px solid black;
+    border-right: 1.5px solid transparent;
+    border-bottom: 1.5px solid transparent;
+    border-radius: 5px;
+    animation: borders 2s linear infinite;
+}
+label{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+.inps{
+    box-shadow: none;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid transparent;
+    border-bottom: 2px solid #cccccc;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.inps:focus{
+    border-bottom: 2px solid black;
+}
+.maindiv h2 .animate1{
+    display: inline-block;
+    width: 0.2rem;
+    height: 1rem;
+    margin: 0% 0.3rem;
+    background-color: rgb(255, 255, 255);
+}
+.maindiv h2 .animate1::after{
+    position: relative;
+    display: block;
+    content: '';
+    width:8px;
+    height: 10px;
+    background-color: #000000;
+    bottom: 1rem;
+    right:0.1rem;
+    border-radius: 50%;   
+ }
+ .animate1.animate::after {
+    animation: upanddown 0.7s linear infinite;
+  }
+ a{
+    text-decoration: none;
+    color: inherit;
+ }
+ @keyframes borders {
+    50%{
+        border-right: 1.5px solid black;
+        border-bottom: 1.5px solid black;
+        border-top:1.5px solid transparent;
+        border-left: 1.5px solid transparent;
+    }
+ }
+ @keyframes upanddown {
+    0%{
+      bottom: 1rem;
+    }
+    50%{
+      bottom: 1.5rem;
+    }
+ }
+ @media screen and (max-width:768px){
+    .maindiv .buttons{
+        width: 80%;
+    }
+ }

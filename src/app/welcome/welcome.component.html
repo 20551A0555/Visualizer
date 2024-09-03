@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <!-- tablemodel -->
+  <div class="modal fade modaldiv" id="Table" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <h5 class="modal-title text-primary" id="exampleModalLongTitle">Hi! Let's Create a Table</h5>
+        </div>
+        <div class="modal-body" id="modal">
+        <div class="container">
+         <div class="container bg-danger h6 text-light p-2 mb-3 col-12 col-lg-12 text-center">{{errmsg}}</div>
+         <div class="row gx-0">
+                <label class="col-12 col-lg-10 mt-1 mb-1" for="rows*columns">Enter No.of Rows & Columns needed for the Table (Eg: if rows=4,cols=5 then 4,5)</label>
+                <input type="text" [(ngModel)]="value" required pattern="^\d,\d$" title="Only 2 numbers are allowed seperated by comma (Eg:rows=4,columns=4 then 4,4)" class="col-5 col-lg-2 text-center inps" name="rows*colums" id="rows*columns" placeholder="Rows,Columns">
+         </div>
+            <div class="container text-center">
+            <label for="headers" [class]="opacity">Enter Table Headers</label>
+            </div>
+            <div class="row gx-0 justify-content-center mt-3" *ngFor="let h of inputh">
+            <input type="text" spellcheck="false" required class="col-4 col-lg-4 text-center inps" name="headers" id="headers" [placeholder]="h.placeholder">
+            </div>
+        <div class="row gx-0 justify-content-center" *ngFor="let item of inputr">
+        <label for="rows" [class]="opacity">{{item.rowlabel}}</label>
+        <input type="text" *ngIf="item.placeholder" spellcheck="false" required class="col-6 col-lg-4 text-center inps" name="headers" id="headers" [placeholder]="item.placeholder">
+         </div>
+         <div class="row gx-0 mt-3 justify-content-between">
+            <button type="button" class="btn btn-danger col-4 col-md-3 col-lg-2" (click)="reload()" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary col-4 col-md-3 col-lg-2" [attr.data-dismiss]="modalclose" name="createbtn"><a href="#modal">Done</a></button>
+            </div>
+        </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- PiechartModel -->
+  <div class="modal fade modaldiv" id="Piechart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <h5 class="modal-title text-primary" id="exampleModalLongTitle">Hi! Let's Create a Piechart</h5>
+        </div>
+        <div class="modal-body" id="modal">
+        <div class="container">
+         <div class="container bg-danger h6 text-light p-2 mb-3 col-12 col-lg-12 text-center">{{errmsg2}}</div>
+         <div class="row gx-0 justify-content-center">
+                <label class="col-12 col-lg-12 mt-1 mb-1 text-center" for="titles">Title</label>
+                <input type="text" spellcheck="false" [(ngModel)]="value1" required pattern="^\d,\d$" title="Only 2 numbers are allowed seperated by comma (Eg:rows=4,columns=4 then 4,4)" class="col-8 col-lg-6 text-center inps" name="titles" id="titles" placeholder="Enter Title For Piechart">
+                <div class="row gx-0 justify-content-center" *ngIf="value1">
+                <label for="no.of_titles" class="col-12 mt-3 mb-1 text-center">Number of Labels (Count)</label>
+                <input type="number" [(ngModel)]="value2" name="no.of_titles" class="col-7 col-lg-3 text-center inps" placeholder="Enter No.of Labels" (input)="piechartcreation()" >
+                </div>
+            </div>
+            <div class="container text-center">
+            <label for="labels" [class]="opacity2">Enter Labels & their Values</label>
+            </div>
+            <div class="row gx-0 justify-content-around mt-3" *ngFor="let t of inputtitle">
+            <input type="text" spellcheck="false" required class="col-6 col-lg-6 text-center inps" name="labels" id="headers" [placeholder]="t.placeholder1">
+            <input type="Number" spellcheck="false" required class="col-5 col-lg-5 text-center inps" name="lables" id="headers" [placeholder]="t.placeholder2">%
+            </div>
+         <div class="row gx-0 mt-3 justify-content-between">
+            <button type="button" class="btn btn-danger col-4 col-md-3 col-lg-2" (click)="reload()" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary col-4 col-md-3 col-lg-2" [attr.data-dismiss]="modalclose" name="donebtn"><a href="#modal" name="piea">Done</a></button>
+            </div>
+        </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="maindiv">
+    <h2 class="text-light">V<span class="animate1"></span>sual<span class="animate1"></span>zer</h2>
+    <div class="buttons">
+     <button class="btn btn-dark" data-toggle="modal" data-target="#Table" name="action" [disabled]="btndisable">{{createtablebtn}}</button>
+     <button class="btn btn-dark" data-toggle="modal" data-target="#Piechart" name="action" [disabled]="btndisable">{{createpiechart}}</button>
+     <button class="btn btn-dark" [disabled]="btndisable">{{createbargraph}}</button>
+    </div>
+    </div>
+</body>
+</html>
